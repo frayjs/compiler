@@ -1,9 +1,9 @@
-fray.component
-==============
+fray.compiler
+=============
 
-Virtual DOM components
+Virtual DOM component code generation
 
 Install
 -------
 
-    npm install --save fray.component
+    npm install --save fray.compiler
