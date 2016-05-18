@@ -1,7 +1,7 @@
 fray.compiler
 =============
 
-Virtual DOM component code generation
+Virtual DOM component code generator
 
 Install
 -------
