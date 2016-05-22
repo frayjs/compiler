@@ -1,0 +1,30 @@
+{
+  "type": "Root",
+  "children": [
+    {
+      "type": "ElementNode",
+      "name": "div",
+      "attrs": {
+        "class": "greeting"
+      },
+      "children": [
+        {
+          "type": "TextNode",
+          "value": "Hello"
+        },
+        {
+          "type": "ExpressionNode",
+          "value": [
+            "user",
+            "name"
+          ]
+        },
+        {
+          "type": "TextNode",
+          "value": "!"
+        }
+      ]
+    }
+  ]
+}
+

@@ -27,31 +27,38 @@ var array = function (arr, indent) {
   ].join('');
 };
 
+var root = function (children) {
+  return {
+    type: 'ElementNode',
+    name: 'div',
+    attrs: {},
+    children: children
+  };
+};
+
 var compiler = function (ast, indent) {
   indent = indent || 2;
 
-  if (ast.type === 'text') {
+  if (ast.type === 'TextNode') {
     return '\'' + ast.value + '\'';
   }
 
-  if (ast.type === 'expr') {
-    return 'state.' + ast.value;
+  if (ast.type === 'ExpressionNode') {
+    return 'state.' + ast.value.join('.');
   }
 
-  if (ast.type === 'tag') {
+  if (ast.type === 'ElementNode') {
     return 'h(' + [
       '\'' + ast.name + '\'',
       object(ast.attrs),
-      array(ast.children.filter(function(child) {
-        return !(child.type === 'text' && child.value === ' ');
-      }).map(function (child) {
+      array(ast.children.map(function (child) {
         return compiler(child, indent + 2);
       }), indent)
     ].join(', ') + ')';
   }
 
-  if (ast.type === 'component') {
-    return header + compiler(ast.root) + footer;
+  if (ast.type === 'Root') {
+    return header + compiler(root(ast.children)) + footer;
   }
 };
 

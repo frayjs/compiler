@@ -8,6 +8,12 @@
   },
   "license": "MIT",
   "main": "src/compiler.js",
+  "bin": {
+    "compiler": "src/cli.js"
+  },
+  "dependencies": {
+    "cli": "github:pfraces/cli"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
